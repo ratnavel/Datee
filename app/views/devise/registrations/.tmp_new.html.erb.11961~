@@ -1,0 +1,46 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <p><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></p>
+  
+  <p><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></p>
+  
+  <p><%= f.label :dob %><br />
+  <%= f.date_select :dob, {:start_year => Time.now.year - 18, :end_year =>Time.now.year - 100 , :order => [:day, :month, :year]}%></p>
+  
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label :address1 %><br />
+  <%= f.text_field :address1 %></p>
+  
+  <p><%= f.label :address2 %><br />
+  <%= f.text_field :address2 %></p>
+  
+  <p><%= f.label :city %><br />
+  <%= f.text_field :city %></p>
+  
+  <p><%= f.label :state %><br />
+  <%= f.select :state, Carmen::states('US'), { :prompt => "Select State"} %></p>
+  
+  <p><%= f.label :zip %><br />
+  <%= f.text_field :zip %></p>
+  
+  <p><%= f.label :country %><br />
+  <%= f.text_field :country, :readonly => true, :value => "US" %></p>
+  
+
+  <p><%= f.submit "Sign up" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
